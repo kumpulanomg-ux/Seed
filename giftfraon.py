@@ -244,8 +244,8 @@ class GiftBot:
 
 async def run_bot():
     bot_client = Client(
-        name="saiko",              # أي اسم قصير للسيشن
-        session_string=Config.FR3ON,      # السيشن سترنج الطويل
+        name="user_session",             # اسم قصير عادي
+        session_string=Config.FR3ON,     # السيشن سترنج الطويل
         api_id=Config.API_ID,
         api_hash=Config.API_HASH,
         sleep_threshold=60,
@@ -256,6 +256,7 @@ async def run_bot():
     async with bot_client:
         bot = GiftBot(bot_client)
         await bot.monitor_gifts()
+
 
 
 
