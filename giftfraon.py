@@ -10,6 +10,11 @@ from typing import List, Dict, Optional, Set
 import logging
 from datetime import datetime, timedelta
 import random
+import os
+from dotenv import load_dotenv
+
+# تحميل ملف gift.env
+load_dotenv("gift.env")
 
 class Config:
     IDS = [
@@ -72,15 +77,19 @@ class Config:
         5782984811920491178: 175,
     }
     
-    PRICE = 300 
-    CHANEL = -1002844864478 #ايدي القناة
+    
+    PRICE = 300
+    CHANEL = -1002844864478
     INTERVAL = 1
     CHECK = 10
     CHECKS = 30
-    FR3ON ="BAF2ELwAlHKB-JpI3-FOu697ucIiiPb1cFhrJBEdRuwLQoJld7cfE-OndQ3Nl4a6JxNC_sDcz1d4_uiOwe7V99vsjxksVblkdj6h-tRFE95WFHHsdDdvRDfTahWcGBpmKn7t3TvUH1altVBQHjPZo0UgKfYPhIulY2EfZ7mLyBPoWWLWYsQZGS3FEVo9L3FDwhUfMkd1c6OafS65FtLTnqnC7e7vp2ltrM8BEjINlU6hyUe3o7wdYECj5ZnbDSeidhHC2tIT9HTvlhQW879XDzSOqmzDNT4KlwEmYYjkAyn7Q7UfRgCsBIXQlGe2kzxZ31iUxlGzzeKGroeCKA2fxNsa2ghYVgAAAAHjwpdxAA"#جلسة الحساب
-    API_ID = 24514748 
-    API_HASH = "5dbe5df68358919d32cbfd341e0142f1"
-    BOT_TOKEN = "8336334115:AAHE1zY6BSXURByHllLxWFF-NXju8BlMAwI" 
+
+    # القيم الحساسة من gift.env
+    FR3ON = os.getenv("SESSION_STRING")
+    API_ID = int(os.getenv("API_ID"))
+    API_HASH = os.getenv("API_HASH")
+    BOT_TOKEN = os.getenv("BOT_TOKEN")
+
 
 class GiftBot:
     def __init__(self, client: Client):
