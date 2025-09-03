@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: telegram-gift-bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python3 web.py & python3 giftfraon.py"
