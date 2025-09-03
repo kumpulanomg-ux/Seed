@@ -242,16 +242,15 @@ class GiftBot:
                 self.logger.error(f"Monitoring error: {e}")
                 await asyncio.sleep(1)  
 
-async def run_bot():
-    bot_client = Client(
-        name=Config.FR3ON,
-        api_id=Config.API_ID,
-        api_hash=Config.API_HASH,
-        bot_token=Config.BOT_TOKEN,
-        sleep_threshold=60,
-        workers=900,
-        max_concurrent_transmissions=30
-    )
+bot_client = Client(
+    session_string=Config.FR3ON,
+    api_id=Config.API_ID,
+    api_hash=Config.API_HASH,
+    sleep_threshold=60,
+    workers=900,
+    max_concurrent_transmissions=30
+)
+
     
     async with bot_client:
         bot = GiftBot(bot_client)
