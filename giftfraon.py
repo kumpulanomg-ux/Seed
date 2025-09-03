@@ -242,19 +242,21 @@ class GiftBot:
                 self.logger.error(f"Monitoring error: {e}")
                 await asyncio.sleep(1)  
 
-bot_client = Client(
-    session_string=Config.FR3ON,
-    api_id=Config.API_ID,
-    api_hash=Config.API_HASH,
-    sleep_threshold=60,
-    workers=900,
-    max_concurrent_transmissions=30
-)
+async def run_bot():
+    bot_client = Client(
+        session_string=Config.FR3ON,   # هنا بنستخدم السيشن ستـرنج
+        api_id=Config.API_ID,
+        api_hash=Config.API_HASH,
+        sleep_threshold=60,
+        workers=900,
+        max_concurrent_transmissions=30
+    )
 
-    
     async with bot_client:
         bot = GiftBot(bot_client)
         await bot.monitor_gifts()
+
+
 
 if __name__ == "__main__":
     print("Starting Telegram Gift Bot...")
